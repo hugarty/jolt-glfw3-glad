@@ -368,7 +368,7 @@ int main(int argc, char** argv)
 		glfwSwapBuffers(mDebugRenderer->window);
     	glfwPollEvents();
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		std::this_thread::sleep_for(std::chrono::milliseconds(50));
 #endif // JPH_DEBUG_RENDERER
 
 		// If you take larger steps than 1 / 60th of a second you need to do multiple collision steps in order to keep the simulation stable. Do 1 collision step per 1 / 60th of a second (round up).
