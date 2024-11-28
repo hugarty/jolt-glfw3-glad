@@ -6,15 +6,11 @@
 #define JPH_DEBUG_RENDERER
 #endif
 
-
-#include "shader_pipeline.hpp"
-#include "live_input_state.hpp"
-
 #include <Jolt/Jolt.h>
 #include <Jolt/Renderer/DebugRenderer.h>
 
+#include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
-
 #include <GLFW/glfw3.h>
 
 
@@ -52,23 +48,15 @@ public:
 
   // opengl related things
   unsigned int VBO, EBO, VAO;
-
-  ShaderPipeline shader_pipeline;
   unsigned int shaderProgram;
 };
 
 class ThatIHaveToMake : public JPH::RefTarget<ThatIHaveToMake> {};
 
 
-
 class TriangleData : public JPH::RefTargetVirtual, public ThatIHaveToMake {
 public:
   
-
-  int num_triangles;
-  std::vector<float> triangle_vertices;
-  long idTriangulo = ++ID_TOP_MERMAO;
-
   TriangleData(const JPH::DebugRenderer::Triangle *triangles, int num_triangles) {
 
     this->num_triangles = num_triangles;
@@ -95,12 +83,6 @@ public:
     }
   }
 
-  bool uses_indices;
-
-  std::vector<float> vertices;
-  std::vector<JPH::uint32> indices;
-  //    std::vector<int> indices;
-
   TriangleData(const JPH::DebugRenderer::Vertex *vertices, int num_vertices, const JPH::uint32 *indices,
                int num_indices) {
     this->uses_indices = true;
@@ -114,7 +96,6 @@ public:
 
     for (int i = 0; i < num_indices; i++) {
       JPH::uint32 index = indices[i];
-      //            int index = indices[i];
       this->indices.push_back(index);
     }
   }
@@ -124,6 +105,14 @@ public:
     if (--mRefCount == 0)
       delete this;
   }
+
+
+  int num_triangles;
+  std::vector<float> triangle_vertices;
+  std::vector<float> vertices;
+  std::vector<JPH::uint32> indices;
+  long idTriangulo = ++ID_TOP_MERMAO;
+  bool uses_indices;
 };
 
 #endif // PHYSICS_DEBUG_RENDERER_HPP
