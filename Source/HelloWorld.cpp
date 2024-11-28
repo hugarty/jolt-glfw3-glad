@@ -328,7 +328,6 @@ int main(int argc, char** argv)
 	// Note that this uses the shorthand version of creating and adding a body to the world
 	BodyCreationSettings sphere_settings(new SphereShape(0.5f), RVec3(0.0_r, 2.0_r, 0.0_r), Quat::sIdentity(), EMotionType::Dynamic, Layers::MOVING);
 	BodyID sphere_id = body_interface.CreateAndAddBody(sphere_settings, EActivation::Activate);
-
 	// Now you can interact with the dynamic body, in this case we're going to give it a velocity.
 	// (note that if we had used CreateBody then we could have set the velocity straight on the body before adding it to the physics system)
 	body_interface.SetLinearVelocity(sphere_id, Vec3(0.0f, -5.0f, 0.0f));

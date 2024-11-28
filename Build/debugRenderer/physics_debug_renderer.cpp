@@ -153,7 +153,10 @@ const char *fragmentShaderSource = "#version 330 core\n"
                                    "uniform vec3 lightColor;\n"
                                    "void main()\n"
                                    "{\n"
-                                   "   float ambientStrength = 0.5;\n"
+                                //  Se a sombra funcionasse namoral, ia dar bom, porém precisa de uma série 
+                                //  de valores que não existe, se quiser isso precisa copiar a implementação original
+                                //    "   float ambientStrength = 0.5;\n"
+                                   "   float ambientStrength = 1.0;\n"
                                    "   vec3 ambient = ambientStrength * lightColor;\n"
 
                                    "   vec3 norm = normalize(Normal);\n"
